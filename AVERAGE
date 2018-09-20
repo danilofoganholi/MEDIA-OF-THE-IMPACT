@@ -1,0 +1,85 @@
+#TITLE
+def title():
+    print('')
+    print('Este programa calcula sua média de qualquer matéria na Impacta.')
+    print('')
+    comeco=input('Para começar clique ENTER')
+    print('')
+
+#CAPITALIZATION OF CONTINUOUS ACTIVITIES
+def copitalization_acts():
+    lista=[]
+    for i in range(1,11):
+        x=-1
+        while x<0 or x>10:
+            x= int(input(f'Digite a nota da atividade contínua {i}: '))
+            print('')
+            if x<0 or x>10:
+                print('Nota inválida! Tente novamente.')
+            else:
+                lista.append(x)
+    return lista
+
+#ORDER THE LIST
+def sort_list(lista):
+    lista.sort(reverse=True)
+    return lista
+
+#AVERAGE CONTINUOUS ACTIVITIES 
+def average_cont_act(lista):
+    sum=0
+    for i in range(0,7):
+        sum= sum + lista[1]
+    average_act = sum/7
+    return average_act
+
+# CAPITALIZATION OF THE TEST NOTE
+def cap_note_test():
+    note=-1
+    while note<0 or note>10:
+        note = float(input('Agora eu preciso da nota da prova: '))
+        print('')
+        if note<0 or note>10:
+            print('Nota inválida! Tente novamente.')
+    return note
+
+#CALCULATE AVERAGE 
+def caLculate(average_act, note):
+    avarege= (average_act*0.6) + (note*0.4)
+    return avarege
+
+#SITUATION
+def situation(avarege):
+    if avarege < 6:
+        print('')
+        print('VOCÊ ESTÁ REPROVADO.')
+        print('')    
+    else:
+        print('')
+        print('VOCÊ ESTÁ APROVADO.') 
+        print('')
+
+def menu():
+    y=0
+    while y!=1 and y!=2:
+        y=int(input('Digite 1 se quiser repetir o programa ou 2 para finalizar: '))
+    if y == 1:
+        global_avarege()
+    else:
+        from time import sleep
+        print('FINALIZANDO PROGRAMA')
+        sleep(5)
+
+#GLOBAL AVAREGE
+def global_avarege():
+    title()
+    lista=copitalization_acts()
+    lista=sort_list(lista)
+    avarage_act=average_cont_act(lista)
+    note= cap_note_test()
+    avarege= caLculate(avarage_act, note)
+    print(f'Essa é sua média {avarege}')
+    situation(avarege)
+    menu()
+
+global_avarege()
